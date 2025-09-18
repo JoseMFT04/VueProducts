@@ -7,7 +7,7 @@
         <div
           class="flex flex-col self-center text-sm text-center md:block lg:col-start-1 md:space-x-6"
         >
-          <span>Copy right © {{ new Date().getFullYear() }} by codemix team </span>
+          <span>Copy right © {{ new Date().getFullYear() }} by José Figueroa </span>
           <a rel="noopener noreferrer" href="#">
             <span>Privacy policy</span>
           </a>
