@@ -55,6 +55,16 @@ const createProduct = async (product: Partial<Product>) => {
   }
 };
 
+export const deleteProduct = async (productId: string) => {
+  try {
+    await tesloApi.delete(`/products/${productId}`);
+    return true;
+  } catch (error) {
+    console.log(error);
+    throw new Error('Error deleting product');
+  }
+};
+
 const uploadImages = async (images: (string | File)[]) => {
   const filesToUpload = images.filter((image) => image instanceof File) as File[];
   const currentImages = images.filter((image) => typeof image === 'string') as string[];

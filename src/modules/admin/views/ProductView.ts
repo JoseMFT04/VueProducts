@@ -1,10 +1,14 @@
 import { defineComponent, ref, watch, watchEffect } from 'vue';
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useMutation, useQuery } from '@tanstack/vue-query';
 import { useFieldArray, useForm } from 'vee-validate';
 import * as yup from 'yup';
 
-import { createUpdateProductAction, getProductById } from '@/modules/products/actions';
+import {
+  createUpdateProductAction,
+  getProductById,
+  deleteProduct,
+} from '@/modules/products/actions';
 import CustomInput from '@/modules/common/components/CustomInput.vue';
 import CustomTextArea from '@/modules/common/components/CustomTextArea.vue';
 import { useToast } from 'vue-toastification';
@@ -88,6 +92,19 @@ export default defineComponent({
       mutate(formvalues);
     });
 
+    const onDelete = async () => {
+      if (!props.productId) return;
+
+      try {
+        await deleteProduct(props.productId);
+        toast.success('Producto eliminado correctamente');
+        router.replace('/admin/products');
+      } catch (error) {
+        toast.error('Error deleting product');
+        console.error(error);
+      }
+    };
+
     const toggleSize = (size: string) => {
       const currentSizes = sizes.value.map((s) => s.value);
       const hasSize = currentSizes.includes(size);
@@ -138,9 +155,17 @@ export default defineComponent({
       },
     );
 
+    const route = useRoute();
+
     watch(isUpdateSuccess, (value) => {
       if (!value) return;
-      toast.success('Producto actualizado correctamente');
+
+      if (route.path === '/admin/products/create') {
+        toast.success('Producto creado correctamente');
+      } else {
+        toast.success('Producto actualizado correctamente');
+      }
+
       router.replace(`/admin/products/${updatedProduct.value!.id}`);
 
       resetForm({
@@ -187,6 +212,7 @@ export default defineComponent({
 
       // Actions
       onSubmit,
+      onDelete,
       toggleSize,
       hasSizes,
       temporalImageUrl,

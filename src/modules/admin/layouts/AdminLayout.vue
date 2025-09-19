@@ -4,15 +4,15 @@
     <!-- Component Start -->
 
     <div class="flex flex-col w-56 border-r border-gray-300">
-      <div class="flex flex-col flex-grow p-4 overflow-auto">
+      <div class="flex flex-col flex-grow p-4 overflow-auto bg-gray-700">
         <RouterLink
-          class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300"
+          class="flex items-center flex-shrink-0 h-10 px-2 text-xl font-medium rounded text-white hover:bg-gray-800"
           to="/admin"
         >
           <span class="leading-none">Dashboard</span>
         </RouterLink>
         <RouterLink
-          class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300"
+          class="flex items-center flex-shrink-0 h-10 px-2 text-xl font-medium rounded text-white hover:bg-gray-800"
           to="/admin/products"
         >
           <span class="leading-none">Productos</span>
@@ -40,12 +40,21 @@
       </div>
     </div>
     <div class="flex flex-col flex-grow">
-      <div class="flex items-center flex-shrink-0 h-16 px-8 border-b border-gray-300 justify-end">
+      <div class="flex items-center flex-shrink-0 h-16 px-8 border-b border-gray-300">
         <h1 class="text-3xl font-medium">{{ user?.fullName }}</h1>
+
+        <RouterLink to="/" class="ml-auto">
+          <button
+            @click="authStore.logout()"
+            type="button"
+            class="mr-3 hidden bg-blue-700 py-2.5 px-6 text-center text-sm font-medium text-white hover:bg-blue-800 cursor-pointer focus:outline-none focus:ring-4 focus:ring-blue-300 md:mr-0 md:inline-block rounded-lg justify-center"
+          >
+            Cerrar sesion
+          </button>
+        </RouterLink>
       </div>
       <RouterView />
     </div>
-    <!-- Component End  -->
   </div>
 
   <a
@@ -71,4 +80,5 @@ import { useAuthStore } from '@/modules/auth/stores/auth.store';
 import { storeToRefs } from 'pinia';
 
 const { user } = storeToRefs(useAuthStore());
+const authStore = useAuthStore();
 </script>

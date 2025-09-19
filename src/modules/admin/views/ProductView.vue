@@ -1,9 +1,6 @@
 <template>
-  <div class="bg-white px-5 py-2 rounded">
-    <h1 class="text-3xl">
-      Producto: <small class="text-blue-500">{{ title }}</small>
-    </h1>
-    <hr class="my-4" />
+  <div class="bg-white px-5 py-2 rounded pt-4">
+    <h1 class="text-3xl font-bold">Producto</h1>
   </div>
 
   <form @submit="onSubmit" class="grid grid-cols-1 sm:grid-cols-2 bg-white px-5 gap-5">
@@ -105,15 +102,30 @@
         <span class="text-red-500" v-if="errors.gender">{{ errors.gender }}</span>
       </div>
 
-      <!-- Botón para guardar -->
-      <div class="my-4 text-right">
-        <button
-          :disabled="isPending"
-          type="submit"
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer disabled:bg-gray-300 disabled:cursor-not-allowed"
-        >
-          Guardar
-        </button>
+      <div class="flex col-auto justify-end">
+        <!-- Botón para guardar -->
+        <div class="my-4">
+          <button
+            :disabled="isPending"
+            type="submit"
+            class="bg-blue-500 hover:bg-blue-700 mr-2 text-white font-bold py-2 px-4 rounded cursor-pointer disabled:bg-gray-300 disabled:cursor-not-allowed"
+          >
+            Guardar
+          </button>
+        </div>
+
+        <!-- Botón para eliminar -->
+        <!-- Botón para eliminar -->
+        <div class="my-4" v-if="productId && productId !== 'create'">
+          <button
+            :disabled="isPending"
+            type="button"
+            @click="onDelete"
+            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded cursor-pointer disabled:bg-gray-300 disabled:cursor-not-allowed"
+          >
+            Eliminar
+          </button>
+        </div>
       </div>
     </div>
   </form>
