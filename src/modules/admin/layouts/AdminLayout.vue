@@ -6,20 +6,20 @@
     <div class="flex flex-col w-56 border-r border-gray-300">
       <div class="flex flex-col flex-grow p-4 overflow-auto bg-gray-700">
         <RouterLink
-          class="flex items-center flex-shrink-0 h-10 px-2 text-xl font-medium rounded text-white hover:bg-gray-800"
+          class="flex items-center flex-shrink-0 h-10 px-2 text-xl font-medium rounded text-white hover:bg-gray-800 duration-200"
           to="/admin"
         >
           <span class="leading-none">Dashboard</span>
         </RouterLink>
         <RouterLink
-          class="flex items-center flex-shrink-0 h-10 px-2 text-xl font-medium rounded text-white hover:bg-gray-800"
+          class="flex items-center flex-shrink-0 h-10 px-2 text-xl font-medium rounded text-white hover:bg-gray-800 duration-200"
           to="/admin/products"
         >
           <span class="leading-none">Productos</span>
         </RouterLink>
         <RouterLink
           to="/admin/products/create"
-          class="flex items-center flex-shrink-0 h-10 px-3 mt-auto text-sm font-medium text-white rounded bg-blue-500 hover:bg-blue-600 transition-all"
+          class="flex items-center flex-shrink-0 h-10 px-3 mt-auto text-sm font-medium text-white rounded bg-blue-500 hover:bg-blue-600 duration-200"
         >
           <svg
             class="w-5 h-5"
@@ -47,7 +47,7 @@
           <button
             @click="authStore.logout()"
             type="button"
-            class="mr-3 hidden bg-blue-700 py-2.5 px-6 text-center text-sm font-medium text-white hover:bg-blue-800 cursor-pointer focus:outline-none focus:ring-4 focus:ring-blue-300 md:mr-0 md:inline-block rounded-lg justify-center"
+            class="mr-3 hidden bg-blue-700 py-2.5 px-6 text-center text-sm font-medium text-white hover:bg-blue-800 cursor-pointer focus:outline-none focus:ring-4 focus:ring-blue-300 md:mr-0 md:inline-block rounded-lg justify-center duration-200"
           >
             Cerrar sesion
           </button>

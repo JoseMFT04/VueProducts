@@ -3,7 +3,7 @@
     <button
       :disabled="page === 1"
       @click="$router.push({ query: { page: page - 1 } })"
-      class="flex items-center space-x-1.5 rounded-lg px-4 py-1.5 text-white bg-blue-500 disabled:bg-gray-300 hover:bg-blue-600 transition-all cursor-pointer disabled:cursor-not-allowed"
+      class="flex items-center space-x-1.5 rounded-lg px-4 py-1.5 text-white bg-blue-500 disabled:bg-gray-300 hover:bg-blue-600 duration-200 cursor-pointer disabled:cursor-not-allowed"
     >
       <ArrowLeftIcon />
       <span>Anteriores</span>
@@ -12,7 +12,7 @@
     <button
       :disabled="hasMoreData"
       @click="$router.push({ query: { page: page + 1 } })"
-      class="flex items-center space-x-1.5 rounded-lg px-4 py-1.5 text-white bg-blue-500 disabled:bg-gray-300 hover:bg-blue-600 transition-all cursor-pointer disabled:cursor-not-allowed"
+      class="flex items-center space-x-1.5 rounded-lg px-4 py-1.5 text-white bg-blue-500 disabled:bg-gray-300 hover:bg-blue-600 duration-200 cursor-pointer disabled:cursor-not-allowed"
     >
       <span>Siguientes</span>
       <ArrowRightIcon />

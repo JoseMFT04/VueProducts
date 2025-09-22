@@ -46,7 +46,7 @@
             @click="toggleSize(size)"
             type="button"
             :class="[
-              ' p-2 rounded w-14 mr-2 flex-1 cursor-pointer',
+              ' p-2 rounded w-14 mr-2 flex-1 cursor-pointer ',
               {
                 'bg-blue-500 text-white': hasSizes(size),
                 'bg-blue-100 ': !hasSizes(size),
@@ -108,7 +108,7 @@
           <button
             :disabled="isPending"
             type="submit"
-            class="bg-blue-500 hover:bg-blue-700 mr-2 text-white font-bold py-2 px-4 rounded cursor-pointer disabled:bg-gray-300 disabled:cursor-not-allowed"
+            class="bg-blue-500 hover:bg-blue-700 mr-2 text-white font-bold py-2 px-4 rounded cursor-pointer disabled:bg-gray-300 disabled:cursor-not-allowed duration-200"
           >
             Guardar
           </button>
@@ -121,7 +121,7 @@
             :disabled="isPending"
             type="button"
             @click="onDelete"
-            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded cursor-pointer disabled:bg-gray-300 disabled:cursor-not-allowed"
+            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded cursor-pointer disabled:bg-gray-300 disabled:cursor-not-allowed duration-200"
           >
             Eliminar
           </button>
