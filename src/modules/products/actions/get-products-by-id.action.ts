@@ -26,7 +26,6 @@ export const getProductById = async (productId: string): Promise<Product> => {
       images: data.images.map(getProductsImageAction),
     };
   } catch (error) {
-    console.log(error);
     throw new Error(`Error getting product by id ${productId}`);
   }
 };

@@ -113,8 +113,6 @@
             Guardar
           </button>
         </div>
-
-        <!-- Botón para eliminar -->
         <!-- Botón para eliminar -->
         <div class="my-4" v-if="productId && productId !== 'create'">
           <button

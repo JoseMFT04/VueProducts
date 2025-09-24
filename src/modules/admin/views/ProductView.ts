@@ -82,8 +82,8 @@ export default defineComponent({
     const imageFiles = ref<File[]>([]);
 
     const onSubmit = handleSubmit(async (values) => {
+      console.log('onSubmit llamado');
       // const product = await createUpdateProductAction(value);
-      // console.log(value);
       const formvalues = {
         ...values,
         images: [...values.images, ...imageFiles.value],
@@ -101,7 +101,6 @@ export default defineComponent({
         router.replace('/admin/products');
       } catch (error) {
         toast.error('Error deleting product');
-        console.error(error);
       }
     };
 

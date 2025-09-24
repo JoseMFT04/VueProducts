@@ -57,7 +57,7 @@
           </tbody>
         </table>
       </div>
-      <ButtonPagination :page="page" :has-more-data="!!products && products.length < 10" />
+      <ButtonPagination :page="page" :has-more-data="!!products && products.length < 9" />
     </div>
   </div>
 </template>
@@ -71,8 +71,6 @@ import { usePagination } from '@/modules/common/composables/usePagination';
 
 const queryClient = useQueryClient();
 const { page } = usePagination();
-
-console.log({ page });
 
 const { data: products = [] } = useQuery({
   queryKey: ['products', { page: page }],
