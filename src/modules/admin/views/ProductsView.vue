@@ -57,7 +57,7 @@
           </tbody>
         </table>
       </div>
-      <ButtonPagination :page="page" :has-more-data="!!products && products.length < 9" />
+      <ButtonPagination :page="page" :has-more-data="!!products && products.length < 12" />
     </div>
   </div>
 </template>

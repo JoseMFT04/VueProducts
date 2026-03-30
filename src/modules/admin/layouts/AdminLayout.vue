@@ -5,12 +5,12 @@
 
     <div class="flex flex-col w-56 border-r border-gray-300">
       <div class="flex flex-col flex-grow p-4 overflow-auto bg-gray-700">
-        <RouterLink
+        <!-- <RouterLink
           class="flex items-center flex-shrink-0 h-10 px-2 text-xl font-medium rounded text-white hover:bg-gray-800 duration-200"
           to="/admin"
         >
           <span class="leading-none">Dashboard</span>
-        </RouterLink>
+        </RouterLink> -->
         <RouterLink
           class="flex items-center flex-shrink-0 h-10 px-2 text-xl font-medium rounded text-white hover:bg-gray-800 duration-200"
           to="/admin/products"

@@ -38,10 +38,6 @@
       />
       <label for="remember" class="text-gray-600 ml-2 cursor-pointer">Recordar usuario</label>
     </div>
-    <!-- Forgot Password Link -->
-    <div class="mb-6 text-blue-500">
-      <a href="#" class="hover:underline">¿Olvidaste la contraseña?</a>
-    </div>
     <!-- Login Button -->
     <button
       type="submit"

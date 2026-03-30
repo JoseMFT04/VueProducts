@@ -28,6 +28,9 @@
         autocomplete="off"
       />
     </div>
+    <div v-if="emailIssues.length" class="text-red-500 text-sm space-y-1 mb-2">
+      <p v-for="issue in emailIssues" :key="issue">- {{ issue }}</p>
+    </div>
     <!-- Password Input -->
     <div class="mb-4">
       <label for="password" class="block text-gray-600">Contraseña</label>
@@ -40,6 +43,9 @@
         class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
         autocomplete="off"
       />
+    </div>
+    <div v-if="passwordIssues.length" class="text-red-500 text-sm space-y-1 mb-2">
+      <p v-for="issue in passwordIssues" :key="issue">- {{ issue }}</p>
     </div>
     <!-- Login Button -->
     <button
@@ -56,7 +62,7 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue';
+import { reactive, ref, computed } from 'vue';
 import { useAuthStore } from '../stores/auth.store';
 import { useToast } from 'vue-toastification';
 
@@ -73,6 +79,29 @@ const myForm = reactive({
   password: '',
 });
 
+const emailIssues = computed(() => {
+  const email = myForm.email;
+  if (!email) return [];
+
+  const issues: string[] = [];
+  if (email.includes(' ') || !email.includes('@')) issues.push('Correo inválido');
+
+  return issues;
+});
+
+const passwordIssues = computed(() => {
+  const pwd = myForm.password;
+  if (!pwd) return [];
+
+  const issues: string[] = [];
+  if (!/[A-Z]/.test(pwd)) issues.push('Debe incluir al menos una letra mayúscula');
+  if (!/[a-z]/.test(pwd)) issues.push('Debe incluir al menos una letra minúscula');
+  if (!/[0-9]/.test(pwd)) issues.push('Debe incluir al menos un número');
+  if (pwd.length < 6) issues.push('Debe tener al menos 6 caracteres');
+
+  return issues;
+});
+
 const onRegister = async () => {
   if (myForm.fullName.length < 2) {
     return fullNameInputRef.value?.focus();
@@ -82,7 +111,15 @@ const onRegister = async () => {
     return emailInputRef.value?.focus();
   }
 
+  if (emailIssues.value.length) {
+    return emailInputRef.value?.focus();
+  }
+
   if (myForm.password.length < 6) {
+    return passwordInputRef.value?.focus();
+  }
+
+  if (passwordIssues.value.length) {
     return passwordInputRef.value?.focus();
   }
 
